@@ -42,6 +42,7 @@
     - So, iterating through it is slower than doing array, even though they're all O(n).
     - However, Inserting in the middle of a linked list, like an hash table, is a lot better than an array.
     - One advantage that it has over hash tables is that there is order to linked list. Each node points to the next node. Sorted Data.
+    - Linked list only has reference to its head and tail.
     - Prepend:  O(1) (add to the beginning of a linked list)
     - Append:   O(1) (Add to the end)
     - Lookup:   O(n) (,or traversal)
