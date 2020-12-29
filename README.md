@@ -49,3 +49,18 @@
     - Insert:   O(n)
     - Delete:   O(n)
     - How does it better when O(n)?
+
+    ## I THINK, Head in Linked List is mandatory element but, Tail is not.
+
+# Doubly Linked List
+
+    - extra piece of data that also links to the previous node.
+    - Double linked lists allow us to traverse our list backwards.
+
+    - Prepend:  O(1) (add to the beginning of a linked list)
+    - Append:   O(1) (Add to the end)
+    - Lookup:   O(n) (,or traversal)  *O(n/2) as this can go backwards. Faster than Singly Linked List.
+    - Insert:   O(n)
+    - Delete:   O(n)
+
+    - Downside: might have to hold additional memory.

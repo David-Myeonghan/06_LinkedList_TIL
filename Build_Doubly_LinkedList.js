@@ -1,70 +1,36 @@
-// 1 --> 10 --> 99 --> 5 --> 16
-
-// let myLinkedList = {  // should be like this.
-// 	// node is a container of data
-// 	head: {
-// 		value: 10,
-// 		next: {
-// 			value: 5,
-// 			next: {
-// 				value: 16,
-// 				next: null,
-// 			},
-// 		},
-// 	},
-// };
-
-// Create a head and a tail.
-class LinkedList {
+class DoublyLinkedList {
 	constructor(value) {
-		// create a head.
 		this.head = {
 			value: value,
 			next: null,
+			previous: null,
 		};
-		this.tail = this.head; // tail = head as one item exist.
-		this.length = 1; // optional but good to track of.
+		this.tail = this.head;
+		this.length = 1;
 	}
-	// ------------------------  My answer .append()
-	// append(value) {
-	// 	this.head.next = value;
-	// 	this.tail = {
-	// 		value: value,
-	// 		next: null,
-	// 	};
-	// 	this.length += 1;
-	// }
 
 	append(value) {
 		const newNode = {
 			value: value,
 			next: null,
+			previous: null,
 		};
-		// const newNode = new Node(value); // instead of newNode you can create newNode using another class.
-		this.tail.next = newNode; // ?? Why should we set tail.next, not just only set this.tail = newNode ??
+		newNode.previous = this.tail;
+		this.tail.next = newNode;
 		this.tail = newNode;
 		this.length++;
 
-		// console.log(this.tail);
 		return this;
-	} // O(1)
-
-	// ------------------------  My answer .prepend()
-	// prepend(value) {
-	// 	const newNode = {
-	// 		value: value,
-	// 		next: this.head,
-	// 	};
-	// 	this.head = newNode;
-	// 	this.length++;
-	// }
+	}
 
 	prepend(value) {
 		const newNode = {
 			value: value,
 			next: null,
+			previous: null,
 		};
 		newNode.next = this.head;
+		this.head.previous = newNode;
 		this.head = newNode;
 		this.length++;
 		return this;
@@ -116,11 +82,14 @@ class LinkedList {
 		const newNode = {
 			value: value,
 			next: null,
+			previous: null,
 		};
 		const leader = this.traverseToIndex(index - 1); // the previous node of the index.
-		const holdingPointer = leader.next;
+		const follower = leader.next;
 		leader.next = newNode;
-		newNode.next = holdingPointer;
+		newNode.previous = leader;
+		newNode.next = follower;
+		follower.previous = newNode;
 		this.length++;
 
 		return this.printList();
@@ -138,6 +107,7 @@ class LinkedList {
 		return currentNode;
 	} // O(n)
 
+	/// code from here.
 	remove(index) {
 		// Check Params
 		// if tail
@@ -172,25 +142,10 @@ class LinkedList {
 	}
 }
 
-// This is usually how OOP works, creating an instance relating to other class instance.
-class Node {
-	constructor(value) {
-		this.value = value;
-		this.next = null;
-	}
-}
-
-const myLinkedList = new LinkedList(10);
-myLinkedList.append(5);
-// console.log(myLinkedList);
-myLinkedList.append(16);
-// console.log(myLinkedList);
-myLinkedList.prepend(1);
-// console.log(myLinkedList);
-myLinkedList.insert(2, 99);
-// console.log(myLinkedList);
-// myLinkedList.remove(2);
-myLinkedList.remove(4);
-console.log(myLinkedList);
-// console.log(myLinkedList);
-// myLinkedList.printList();
+const myDoublyLinkedList = new DoublyLinkedList(10);
+myDoublyLinkedList.append(5);
+myDoublyLinkedList.append(16);
+myDoublyLinkedList.prepend(1);
+myDoublyLinkedList.insert(1, 99);
+console.log(myDoublyLinkedList);
+// myDoublyLinkedList.printList();
