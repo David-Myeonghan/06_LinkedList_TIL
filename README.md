@@ -64,3 +64,9 @@
     - Delete:   O(n)
 
     - Downside: might have to hold additional memory.
+
+    ** Circular Dependencies occurred when executing Doubly Linked List **
+    ** "https://stackoverflow.com/questions/6010173/in-nodejs-when-i-console-log-a-req-object-what-does-circular-reference-how" **
+
+    ** If you want to free the contents of a variable, you can set it to null.
+    ** "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Delete_in_strict_mode" **

@@ -107,35 +107,39 @@ class DoublyLinkedList {
 		return currentNode;
 	} // O(n)
 
-	/// code from here.
 	remove(index) {
-		// Check Params
-		// if tail
+		// Check Params // needs to refactoring.
+		// if tail // If we know what the tail is, not need to iterate while loop
 		if (index >= this.length) {
-			let leader = this.head;
-			let unwanted = leader.next;
-
-			while (unwanted.next !== null) {
-				leader = leader.next;
-				unwanted = unwanted.next;
-			}
-			leader.next = null;
-			this.tail = leader;
+			let temp = this.tail; // this temp is only for itself to be deleted(null)?
+			this.tail = this.tail.previous;
+			this.tail.next = null;
 			this.length--;
+			// delete temp; // not allowed in strict mode.
+			temp = null;
+
 			return this.printList();
 		}
 
 		// if head
 		if (index === 0) {
-			// const temp = this.head;
+			let temp = this.head;
 			this.head = this.head.next;
+			temp = null;
+			// Why is this if statement needed?
+			if (this.head != null) {
+				this.head.previous = null;
+			}
 			this.length--;
+
 			return this.printList();
 		}
 
 		const leader = this.traverseToIndex(index - 1);
-		const unwantedNode = leader.next; // my answer: const latter = this.traverseToIndex(index + 1); //or, leader.next.next;
-		leader.next = unwantedNode.next; // leader.next = latter;
+		const unwantedNode = leader.next;
+		const follower = unwantedNode.next;
+		leader.next = follower;
+		follower.previous = leader;
 		this.length--;
 
 		return this.printList();
@@ -147,5 +151,7 @@ myDoublyLinkedList.append(5);
 myDoublyLinkedList.append(16);
 myDoublyLinkedList.prepend(1);
 myDoublyLinkedList.insert(1, 99);
+console.log(myDoublyLinkedList);
+myDoublyLinkedList.remove(0);
 console.log(myDoublyLinkedList);
 // myDoublyLinkedList.printList();

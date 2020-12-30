@@ -139,7 +139,7 @@ class LinkedList {
 	} // O(n)
 
 	remove(index) {
-		// Check Params
+		// Check Params // needs to refactoring
 		// if tail
 		if (index >= this.length) {
 			let leader = this.head;
