@@ -126,7 +126,7 @@ class DoublyLinkedList {
 			let temp = this.head;
 			this.head = this.head.next;
 			temp = null;
-			// Why is this if statement needed?
+			// Why is this if statement needed? // for valid check?
 			if (this.head != null) {
 				this.head.previous = null;
 			}

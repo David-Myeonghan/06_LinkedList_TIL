@@ -70,3 +70,22 @@
 
     ** If you want to free the contents of a variable, you can set it to null.
     ** "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Delete_in_strict_mode" **
+
+## When to use?
+
+    # Singly Linked List
+        - Pros: fairly Simple Implementaion especially compared to the doubly one.
+                Less memory, Less opertaion, little bit faster
+        - Cons: Cannot be iterate/reverse/traverse from back to front. If we lose the reference to the head node, the list can actually be lost in memory forever.
+        - Useful when less memory, expensive memory. If you want fast insert/deletion, and not need mush searching.
+
+    # Doubly Linked List
+        -Pros:  Can be iterate through from the back to the beginning.
+                No need to traverse from the head to fine what the previous node when deleting a node.
+        - Cons: Complex to implement, requires more memory/storage. Extra operation to edit previous nodes.
+        -Useful when you don't have much limitation on memory, Good operation for searching for elements.
+
+### no random access unlike array
+
+    - Good: Fast Insertion, Fast Deletion, Ordered, Flexible Size
+    - Bad: Slow Lookup, More Memory.
